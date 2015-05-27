@@ -1,0 +1,16 @@
+admin-email = <%= @admin_email %>
+ssl-set-org = <%= @ca_org %>
+ssl-set-org-unit = <%= @ca_org_unit %>
+ssl-set-city = <%= @ca_city %>
+ssl-set-state = <%= @ca_state %>
+ssl-set-country = <%= @ca_country_code %>
+ssl-password = <%= @ca_cert_pass %>
+ssl-set-email = <%= @admin_email %>
+ssl-config-sslvhost = Y
+db-backend=postgresql
+db-name=<%= @db_name %>
+db-user=<%= @db_user %>
+db-password=<%= @db_pass %>
+db-host=<%= @db_host %>
+db-port=<%= @db_port %>
+enable-tftp=Y
