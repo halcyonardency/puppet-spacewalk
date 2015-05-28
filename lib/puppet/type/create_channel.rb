@@ -18,11 +18,13 @@ Puppet::Type.newtype(:create_channel) do
     desc "Spacewalk password."
   end
 
-  newproperty(:label) do
+  #newproperty(:label) do
+  newparam(:label) do
     desc "Label for the spacewalk channel."
   end
 
-  newproperty(:description) do
+  #newproperty(:description) do
+  newparam(:description) do
     desc "Description for the spacewalk channel."
   end
 
