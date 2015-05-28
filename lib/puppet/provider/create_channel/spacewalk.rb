@@ -19,7 +19,7 @@ Puppet::Type.type(:create_channel).provide(:spacewalk) do
   def exists?
     debug("Checking spacewalk for channel \"#{resource[:name]}\"")
     debug(resource[:name])
-    retval 0
+    return 0
   end
 
   def rpc(client)
