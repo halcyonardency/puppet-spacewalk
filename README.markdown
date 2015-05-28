@@ -54,7 +54,7 @@ A minimal example might be:
 ~~~
   class {'::spacewalk':
     db_pass         => 'ChangeMePlease',
-    admin_email     => 'ops@conpany.com',
+    admin_email     => 'ops@company.com',
     ca_cert_pass    => 'ChangeMeTwo',
     ca_org          => 'Ops',
     ca_city         => 'Los Angeles',
@@ -63,10 +63,20 @@ A minimal example might be:
   }
 ~~~
 
+### Installing a Spacewalk Client and Register with the server
+
+~~~
+  class {'::spacewalk::client': 
+    server_fqdn   => 'spacewalk.company.com',
+    activationkey => '1-111222333444555666777888999000aa',
+  }
+~~~
+
 ## Reference
 
 ###Defines
-* `spacewalk`: Manages a file, compiled from one or more text fragments.
+* `spacewalk`: Installs spacewalk server.
+* `spacewalk::client`: Installs a Spacewalk Client and registers it with the server.
 
 ####Define: `spacewalk`
 
@@ -146,6 +156,38 @@ The CA cert country.
 #####`utils_package_name`
 
 Utility package names.
+
+####Define: `spacewalk::client`
+
+###### These parameters are required
+
+#####`server_fqdn`
+
+The FQDN of the spacewalk server the client will register with.
+
+#####`activationkey`
+
+The spacewalk activationkey that will be used to register
+with the server.
+
+
+###### All the parameters listed below are optional.
+
+#####`client_package_name`
+
+The name of the spacewalk-client package.
+
+#####`version`
+
+The version of spacewalk that will be installed.
+
+#####`release`
+
+The spacewalk-client package release number.
+
+#####`repo_release`
+
+The spacewalk repo package release number.
 
 ## Limitations
 
