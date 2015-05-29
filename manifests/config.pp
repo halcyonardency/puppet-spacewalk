@@ -11,7 +11,7 @@ class spacewalk::config {
   }
   
   file {'/etc/spacewalk.answer':
-    ensure  => 'present',
+    ensure  => present,
     owner   => 'root',
     group   => 'root',
     replace => false,
