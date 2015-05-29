@@ -49,7 +49,7 @@
 #
 # Copyright 2014 Toni Schmidbauer
 #
-define spacewalk::channel(
+define spacewalk::errata_setup(
   $ensure     = present,
   $channel    = $title,
   $os_version = undef,
