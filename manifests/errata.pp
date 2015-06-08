@@ -13,20 +13,49 @@
 #   The spacewalk pass, this will be used to upload the 
 #   errata to spacewalk.
 #
-# [*rhn_user*]
-#   The rhn user
-#
-# [*rhn_pass*]
-#   The rhn pass
-#
 class spacewalk::errata (
   $spacewalk_user = undef,
   $spacewalk_pass = undef,
-  $rhn_user       = undef,
-  $rhn_pass       = undef,
 ) inherits ::spacewalk::params {
-
-  contain ::spacewalk::errata::install
-  contain ::spacewalk::errata::config
+  
+  package { 'perl-Text-Unidecode':
+    ensure  =>  present,
+  }
+  
+  package { 'perl-XML-Simple':
+    ensure  =>  present,
+  }
+  
+  file {'/sbin/errata-import.pl':
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0700',
+    source => 'puppet:///modules/spacewalk/errata-import.pl',
+  }
+  
+  file {'/sbin/errata-import.sh':
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0700',
+    source => 'puppet:///modules/spacewalk/errata-import.sh',
+  }
+  
+  file {'/etc/errata-import.cfg':
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0600',
+    content => template('spacewalk/errata-import.cfg.erb'),
+  }
+  
+  cron {'errata-import':
+    ensure  => present,
+    command => "/sbin/errata-import.sh",
+    user    => 'root',
+    hour    => '*/6',
+    minute  => '0'
+  }
 
 }

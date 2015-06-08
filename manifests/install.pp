@@ -44,5 +44,11 @@ class spacewalk::install {
     install_options => [ '--nogpgcheck' ],
     require         => Package[$::spacewalk::package_name],
   }
+  
+  package { $::spacewalk::cmd_package_name:
+    ensure          => present,
+    install_options => [ '--nogpgcheck' ],
+    require         => Package[$::spacewalk::package_name],
+  }
 
 }

@@ -52,6 +52,10 @@
 # [*utils_package_name*]
 #   Utility package names.
 #
+# [*cmd_package_name*]
+#   Command utility package names. This is used
+#   for some of the funtionality of this module.
+#
 class spacewalk (
   $package_name       = $::spacewalk::params::package_name,
   $version            = $::spacewalk::params::version,

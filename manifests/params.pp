@@ -4,20 +4,21 @@
 # It sets variables according to platform.
 #
 class spacewalk::params {
-  $version            = '2.3'
-  $repo_release       = '4'
-  $db_package_name    = 'spacewalk-setup-postgresql'
-  $db_name            = 'spacewalk'
-  $db_user            = 'spacewalk'
-  $db_host            = 'localhost'
-  $db_port            = '5432'
-  $admin_email        = 'root@localhost'
-  $ca_org             = 'ops'
-  $ca_org_unit        = $::fqdn
-  $ca_city            = 'San Francisco'
-  $ca_state           = 'CA'
-  $ca_country_code    = 'US'
+  $version                   = '2.3'
+  $repo_release              = '4'
+  $db_package_name           = 'spacewalk-setup-postgresql'
+  $db_name                   = 'spacewalk'
+  $db_user                   = 'spacewalk'
+  $db_host                   = 'localhost'
+  $db_port                   = '5432'
+  $admin_email               = 'root@localhost'
+  $ca_org                    = 'ops'
+  $ca_org_unit               = $::fqdn
+  $ca_city                   = 'San Francisco'
+  $ca_state                  = 'CA'
+  $ca_country_code           = 'US'
   $utils_package_name = 'spacewalk-utils'
+  $cmd_package_name   = 'spacecmd'
   
   case $::osfamily {
     'RedHat', 'Amazon': {
